@@ -48,7 +48,7 @@ export default function Home() {
         <HeroTitle>Master Your Technical Interviews</HeroTitle>
         <HeroSubtitle>
           Practice with a curated collection of software engineering flashcards.
-          From algorithms to system design - we've got you covered.
+          From algorithms to system design - we&apos;ve got you covered.
         </HeroSubtitle>
       </Hero>
 

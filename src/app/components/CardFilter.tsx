@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 
 interface CardFilterProps {
   topics: string[];
@@ -59,11 +58,8 @@ const FilterTitle = styled.h2`
 `;
 
 const CardFilter = ({ topics, selectedTopic, onTopicSelect }: CardFilterProps) => {
-  const [activeFilters, setActiveFilters] = useState<number>(0);
 
   const handleTopicSelect = (topic: string) => {
-    // Track filter usage for analytics
-    setActiveFilters(prev => prev + 1);
     onTopicSelect(topic);
   };
 
