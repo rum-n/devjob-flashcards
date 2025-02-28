@@ -137,6 +137,13 @@ const Card = ({ topic, question, answer }: CardProps) => {
     setSpeechSupported(!!isSpeechRecognitionSupported);
   }, []);
 
+  // Add this effect to debug transcript changes
+  useEffect(() => {
+    if (transcript) {
+      console.log('Transcript updated:', transcript);
+    }
+  }, [transcript]);
+
   const handleAIFeedback = async (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent card flip
 
@@ -151,21 +158,28 @@ const Card = ({ topic, question, answer }: CardProps) => {
       stopListening();
       setIsRecording(false);
 
-      // Send transcript to AI for evaluation
-      if (transcript) {
-        console.log('Transcript:', transcript);
-        try {
-          const response = await evaluateExplanation(transcript, answer);
-          setFeedback(response);
+      // Add a small delay to ensure transcript is updated
+      setTimeout(async () => {
+        // Send transcript to AI for evaluation
+        if (transcript) {
+          console.log('Processing transcript:', transcript);
+          try {
+            const response = await evaluateExplanation(transcript, answer);
+            console.log('AI response received:', response);
+            setFeedback(response);
+            setIsFlipped(true);
+          } catch (error) {
+            console.error('Error getting AI feedback:', error);
+            setFeedback('Sorry, there was an error evaluating your explanation. Please try again.');
+            setIsFlipped(true);
+          }
+        } else {
+          console.warn('No transcript detected');
+          setFeedback('No speech was detected. Please try again and speak clearly.');
           setIsFlipped(true);
-        } catch (error) {
-          console.error('Error getting AI feedback:', error);
-          setFeedback('Sorry, there was an error evaluating your explanation. Please try again.');
         }
-      } else {
-        setFeedback('No speech was detected. Please try again and speak clearly.');
-      }
-      setIsProcessing(false);
+        setIsProcessing(false);
+      }, 500); // 500ms delay to ensure transcript is updated
     } else {
       setFeedback('');
       setIsRecording(true);
@@ -196,6 +210,7 @@ const Card = ({ topic, question, answer }: CardProps) => {
         <CardBack>
           <Answer>{answer}</Answer>
           {feedback && <FeedbackText>{feedback}</FeedbackText>}
+          {isProcessing && <FeedbackText>Processing your explanation...</FeedbackText>}
         </CardBack>
       </CardInner>
     </CardContainer>
