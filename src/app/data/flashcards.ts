@@ -58,7 +58,67 @@ export const flashcards = [
     topic: 'React',
     question: 'What is React Context?',
     answer: 'Context provides a way to pass data through the component tree without having to pass props manually at every level, useful for sharing global data.',
-  }
+  },
+  {
+    id: '11',
+    topic: 'System Design',
+    question: 'What is a Microservice Architecture?',
+    answer: 'An architectural style that structures an application as a collection of small, loosely coupled services that communicate through lightweight protocols, allowing for independent deployment and scaling.',
+  },
+  {
+    id: '12',
+    topic: 'Database',
+    question: 'Explain the difference between SQL and NoSQL databases',
+    answer: 'SQL databases are relational, table-based, and use structured query language with predefined schemas. NoSQL databases are non-relational, document/key-value/graph-based, with dynamic schemas for unstructured data and typically scale horizontally.',
+  },
+  {
+    id: '13',
+    topic: 'JavaScript',
+    question: 'What are Promises in JavaScript?',
+    answer: 'Promises are objects representing the eventual completion or failure of an asynchronous operation. They allow you to chain asynchronous operations and handle success or failure in a more elegant way than callbacks.',
+  },
+  {
+    id: '14',
+    topic: 'Data Structures',
+    question: 'What is a Trie data structure?',
+    answer: 'A tree-like data structure used to store a dynamic set of strings, where the keys are usually strings. Each node represents a character, and paths from root to leaf form complete words, making it efficient for prefix searches.',
+  },
+  {
+    id: '15',
+    topic: 'Algorithms',
+    question: 'What is Dynamic Programming?',
+    answer: 'An algorithmic technique that solves complex problems by breaking them down into simpler subproblems, solving each subproblem once, and storing the solutions to avoid redundant computations.',
+  },
+  {
+    id: '16',
+    topic: 'React',
+    question: 'What are React Hooks?',
+    answer: 'Functions that let you use state and other React features in functional components without writing a class. Common hooks include useState, useEffect, useContext, useReducer, and useMemo.',
+  },
+  {
+    id: '17',
+    topic: 'System Design',
+    question: 'Explain CAP Theorem',
+    answer: 'A theorem stating that distributed data systems can only provide two of three guarantees simultaneously: Consistency (all nodes see the same data), Availability (every request receives a response), and Partition tolerance (system continues to operate despite network failures).',
+  },
+  {
+    id: '18',
+    topic: 'Database',
+    question: 'What is Database Sharding?',
+    answer: 'A database architecture pattern where a large database is partitioned into smaller, faster, more manageable pieces called shards, which can be spread across multiple servers to distribute load and improve performance.',
+  },
+  {
+    id: '19',
+    topic: 'Algorithms',
+    question: 'What is Big O Notation?',
+    answer: 'A mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity, used to classify algorithms according to their time or space complexity as input size grows.',
+  },
+  {
+    id: '20',
+    topic: 'JavaScript',
+    question: 'What is the Event Loop in JavaScript?',
+    answer: 'A programming construct that waits for and dispatches events in a program. In JavaScript, it allows for asynchronous operations by pushing callbacks onto a queue and executing them after the current call stack is empty.',
+  },
 ];
 
 export const topics = [

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 interface CardFilterProps {
   topics: string[];
@@ -49,20 +50,41 @@ const ClearButton = styled.button`
   }
 `;
 
+const FilterTitle = styled.h2`
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #374151;
+`;
+
 const CardFilter = ({ topics, selectedTopic, onTopicSelect }: CardFilterProps) => {
+  const [activeFilters, setActiveFilters] = useState<number>(0);
+
+  const handleTopicSelect = (topic: string) => {
+    // Track filter usage for analytics
+    setActiveFilters(prev => prev + 1);
+    onTopicSelect(topic);
+  };
+
+  const handleClearFilter = () => {
+    onTopicSelect(null);
+  };
+
   return (
     <FilterContainer>
+      <FilterTitle>Filter by Topic</FilterTitle>
       {topics.map(topic => (
         <FilterButton
           key={topic}
           isSelected={selectedTopic === topic}
-          onClick={() => onTopicSelect(topic)}
+          onClick={() => handleTopicSelect(topic)}
         >
           {topic}
         </FilterButton>
       ))}
       {selectedTopic && (
-        <ClearButton onClick={() => onTopicSelect(null)}>
+        <ClearButton onClick={handleClearFilter}>
           Clear Filter
         </ClearButton>
       )}
